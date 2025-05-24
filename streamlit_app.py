@@ -17,26 +17,18 @@ conn = mysql.connector.connect(
 query = "SELECT * FROM productos_papeleria"
 df = pd.read_sql(query, conn)
 
-st.set_page_config(page_title="Análisis Exploratorio", layout="wide")
+st.title("📊 Análisis Exploratorio de Datos - Papelería")
 
-st.title("📊 Análisis Exploratorio de Productos")
-
-st.subheader("Primeros registros")
+st.subheader("1️⃣ Primeros registros")
 st.write(df.head())
 
-st.subheader("Distribución de Precios")
-fig, ax = plt.subplots()
-sns.histplot(df['precio'], bins=20, kde=True, ax=ax)
-st.pyplot(fig)
+st.subheader("2️⃣ Estructura del dataset")
+st.write("Dimensiones:", df.shape)
+st.write("Columnas y tipos de datos:")
+st.write(df.dtypes)
 
-st.subheader("Gráfico de caja por categoría")
-if 'categoria' in df.columns:
-    fig2, ax2 = plt.subplots()
-    sns.boxplot(data=df, x='categoria', y='precio', ax=ax2)
-    plt.xticks(rotation=45)
-    st.pyplot(fig2)
+st.subheader("3️⃣ Datos únicos por columna")
+st.write(df.nunique())
 
-st.subheader("Matriz de correlación")
-fig3, ax3 = plt.subplots()
-sns.heatmap(df.corr(numeric_only=True), annot=True, cmap="Blues", ax=ax3)
-st.pyplot(fig3)
+st.subheader("4️⃣ Valores nulos")
+st.write(df.isnull().sum())
