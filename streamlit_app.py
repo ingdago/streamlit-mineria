@@ -17,7 +17,7 @@ conn = mysql.connector.connect(
 query = "SELECT * FROM productos_papeleria"
 df = pd.read_sql(query, conn)
 
-st.title("📊 Análisis Exploratorio de Datos - Papelería")
+st.title("📊 Análisis Exploratorio")
 
 st.subheader("1️⃣ Primeros registros")
 st.write(df.head())
@@ -32,3 +32,10 @@ st.write(df.nunique())
 
 st.subheader("4️⃣ Valores nulos")
 st.write(df.isnull().sum())
+
+st.subheader("5️⃣ Estadísticas descriptivas (Precio)")
+st.write(df['precio'].describe())
+
+st.write("Moda del precio:", df['precio'].mode()[0])
+st.write("Mediana del precio:", df['precio'].median())
+
