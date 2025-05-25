@@ -33,8 +33,16 @@ st.write(df.nunique())
 st.subheader("4️⃣ Valores nulos")
 st.write(df.isnull().sum())
 
-st.subheader("5️⃣ Estadísticas descriptivas (Precio)")
-st.write(df['precio'].describe())
+st.subheader("5️⃣ Estadísticas Descriptivas (Precio)")
+
+# Convertir a DataFrame y reiniciar índice
+stats_df = df['precio'].describe().reset_index()
+
+# Renombrar columnas para mayor claridad
+stats_df.columns = ['Estadística', 'Valor']
+
+# Mostrar el DataFrame con nombres explícitos
+st.write(stats_df)
 
 st.write("Moda del precio:", df['precio'].mode()[0])
 st.write("Mediana del precio:", df['precio'].median())
