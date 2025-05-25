@@ -30,7 +30,7 @@ st.write(df.dtypes)
 st.subheader("3️⃣ Datos únicos por columna")
 st.write(df.nunique())
 
-st.subheader("4️⃣ Valores nulos")
+st.subheader("4️⃣ Valores nulos jaja")
 st.write(df.isnull().sum())
 
 st.subheader("5️⃣ Estadísticas descriptivas (Precio)")
