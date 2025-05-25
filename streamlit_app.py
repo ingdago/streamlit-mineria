@@ -62,3 +62,13 @@ fig4, ax4 = plt.subplots()
 df['categoria'].value_counts().plot.pie(autopct='%1.1f%%', ax=ax4)
 ax4.set_ylabel('')
 st.pyplot(fig4)
+
+st.subheader("🔄 Análisis Bivariado: Precio por Categoría")
+fig5, ax5 = plt.subplots()
+sns.barplot(data=df, x='categoria', y='precio', estimator='mean', ax=ax5)
+ax5.set_xticklabels(ax5.get_xticklabels(), rotation=45)
+st.pyplot(fig5)
+
+st.subheader("🔄 Tabla de contingencia: Categoría vs Marca")
+tabla = pd.crosstab(df['categoria'], df['marca'])
+st.write(tabla)
