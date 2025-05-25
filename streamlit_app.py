@@ -48,9 +48,24 @@ st.write("Moda del precio:", df['precio'].mode()[0])
 st.write("Mediana del precio:", df['precio'].median())
 
 st.subheader("6️⃣ Histograma de precios")
-fig1, ax1 = plt.subplots()
-sns.histplot(df['precio'], kde=True, ax=ax1)
+
+# Crear figura y eje
+fig1, ax1 = plt.subplots(figsize=(10, 5))  # Tamaño más ancho
+
+# Histograma con número de bins personalizado y sin valores extremos
+sns.histplot(df['precio'], kde=True, bins=30, ax=ax1)
+
+# Opcional: limitar el eje X para enfocar en los valores comunes (quita valores extremos)
+ax1.set_xlim(df['precio'].quantile(0.01), df['precio'].quantile(0.99))  # Quitar outliers
+
+# Título y etiquetas
+ax1.set_title("Distribución de precios (sin valores extremos)")
+ax1.set_xlabel("Precio")
+ax1.set_ylabel("Frecuencia")
+
+# Mostrar en Streamlit
 st.pyplot(fig1)
+
 
 st.subheader("7️⃣ Diagrama de caja (Boxplot) por categoría")
 fig2, ax2 = plt.subplots()
