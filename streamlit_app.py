@@ -73,7 +73,7 @@ sns.boxplot(data=df, x='categoria', y='precio', ax=ax2)
 plt.xticks(rotation=45)
 st.pyplot(fig2)
 
-st.subheader("8️⃣ Diagrama de barras por cantidad de productos por categoría ")
+st.subheader("8️⃣ Diagrama de barras por cantidad de productos por categoría")
 
 # Contar la cantidad de productos por categoría
 categoria_count = df['categoria'].value_counts()
@@ -121,7 +121,3 @@ fig5, ax5 = plt.subplots()
 sns.barplot(data=df, x='categoria', y='precio', estimator='mean', ax=ax5)
 ax5.set_xticklabels(ax5.get_xticklabels(), rotation=45)
 st.pyplot(fig5)
-
-st.subheader("🔄 Tabla de contingencia: Categoría vs Marca")
-tabla = pd.crosstab(df['categoria'], df['marca'])
-st.write(tabla)
