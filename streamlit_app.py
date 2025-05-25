@@ -73,7 +73,7 @@ sns.boxplot(data=df, x='categoria', y='precio', ax=ax2)
 plt.xticks(rotation=45)
 st.pyplot(fig2)
 
-st.subheader("8️⃣ Diagrama de barras por cantidad de productos por categoría")
+st.subheader("8️⃣ Diagrama de barras por cantidad de productos por categoría ")
 
 # Contar la cantidad de productos por categoría
 categoria_count = df['categoria'].value_counts()
