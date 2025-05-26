@@ -149,3 +149,21 @@ if 'marca' in df.columns:
 else:
     st.warning("La columna 'marca' no existe en el DataFrame.")
 
+st.subheader("📊 Tabla de Frecuencia Absoluta y Relativa - Columna 'categoria'")
+
+# Verificar si existe la columna
+if 'categoria' in df.columns:
+    # Calcular frecuencias
+    frecuencia_abs = df['categoria'].value_counts()
+    frecuencia_rel = df['categoria'].value_counts(normalize=True).round(4) * 100
+
+    # Unir ambas en un DataFrame
+    tabla_frecuencia_cat = pd.DataFrame({
+        'Frecuencia Absoluta': frecuencia_abs,
+        'Frecuencia Relativa (%)': frecuencia_rel
+    })
+
+    # Mostrar tabla
+    st.write(tabla_frecuencia_cat)
+else:
+    st.warning("La columna 'categoria' no existe en el DataFrame.")
